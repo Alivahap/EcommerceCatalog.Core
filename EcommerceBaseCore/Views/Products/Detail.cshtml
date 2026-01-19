@@ -1,0 +1,49 @@
+@model EcommerceBaseCore.Models.Product
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<section class="section">
+    <div class="container">
+
+        <div class="row g-5">
+            <div class="col-md-6">
+               <div class="product-detail-img"
+     data-bg="@Url.Content(Model.ImagePath)">
+</div>
+            </div>
+
+            <div class="col-md-6">
+                <span class="badge badge-baby-soft mb-2">
+                    @Model.Category?.Name
+                </span>
+
+                <h1 class="fw-bold mb-3">@Model.Name</h1>
+
+                <div class="price-baby mb-3">
+                    ₺ @Model.Price.ToString("N0")
+                </div>
+
+                <p class="text-muted mb-4">
+                    @Model.Description
+                </p>
+
+                <div class="d-flex gap-3">
+                    <a class="btn btn-baby px-4"
+                       asp-controller="Contact"
+                       asp-action="Index">
+                        İletişime Geç
+                    </a>
+
+                    <a class="btn btn-outline-baby px-4"
+                       asp-controller="Products"
+                       asp-action="Index">
+                        ← Tüm Ürünler
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

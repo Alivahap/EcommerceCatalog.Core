@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Catalogo</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">
+                Catalogo
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="topNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Products" asp-action="Index">Ürünler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Blog" asp-action="Index">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Faq" asp-action="Index">SSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="About" asp-action="Index">Biz Kimiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-lg-2" asp-controller="Contact" asp-action="Index">
+                            İletişim
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page -->
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer border-top mt-5">
+        <div class="container py-4">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-6">
+                    <div class="fw-bold">Catalogo</div>
+                    <div class="text-muted small">Ürün katalog & içerik platformu.</div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a class="text-decoration-none me-3" asp-controller="About" asp-action="Index">Biz Kimiz</a>
+                    <a class="text-decoration-none me-3" asp-controller="Faq" asp-action="Index">SSS</a>
+                    <a class="text-decoration-none" asp-controller="Contact" asp-action="Index">İletişim</a>
+                    <div class="text-muted small mt-2">© @DateTime.Now.Year Catalogo</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("[data-bg]").forEach(el => {
+    const url = el.getAttribute("data-bg");
+    if (url) el.style.backgroundImage = `url('${url}')`;
+  });
+});
+</script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,216 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<!-- ===== HERO ===== -->
+<header class="hero-modern">
+    <div class="container py-6">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <span class="badge badge-baby mb-3">Yeni Sezon • 2026</span>
+
+                <h1 class="display-4 fw-bold mb-3 hero-title">
+                    Miniklere özel
+                    <span class="text-gradient-baby">şık & rahat</span>
+                    tasarımlar
+                </h1>
+
+                <p class="lead text-muted mb-4">
+                    Yenidoğandan 10 yaşa kadar doğal kumaşlardan üretilmiş
+                    bebek ve çocuk giyim koleksiyonu.
+                </p>
+
+                <div class="d-flex gap-3 flex-wrap">
+                    <a class="btn btn-baby btn-lg px-5 rounded-pill"
+                       asp-controller="Products" asp-action="Index">
+                        Koleksiyonu Keşfet
+                    </a>
+
+                    <a class="btn btn-outline-baby btn-lg px-5 rounded-pill"
+                       asp-controller="Contact" asp-action="Index">
+                        İletişime Geç
+                    </a>
+                </div>
+
+                <div class="hero-stats mt-5">
+                    <div class="stat">
+                        <div class="stat-value">300+</div>
+                        <div class="stat-label">Ürün</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">0–10</div>
+                        <div class="stat-label">Yaş Aralığı</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">%100</div>
+                        <div class="stat-label">Pamuk</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero görsel kolaj -->
+            <div class="col-lg-6">
+                <div class="hero-collage">
+                    <div class="hero-photo big"
+                         style="background:url('/images/hero/hero1.jpg') center / cover no-repeat;"></div>
+                    <div class="hero-photo small"
+                         style="background:url('/images/hero/hero2.jpg') center / cover no-repeat;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===== KATEGORİLER ===== -->
+<section class="section">
+    <div class="container">
+
+        <div class="mb-4 text-center">
+            <h2 class="fw-bold mb-1">Kategoriler</h2>
+            <p class="text-muted mb-0">Miniklere özel koleksiyonlar</p>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var cat in new[]
+            {
+                new { Name = "Yenidoğan", Img = "/images/categories/newborn.jpg" },
+                new { Name = "Kız Çocuk", Img = "/images/categories/girl.jpg" },
+                new { Name = "Erkek Çocuk", Img = "/images/categories/boy.jpg" },
+                new { Name = "Aksesuar", Img = "/images/categories/accessories.jpg" }
+            })
+            {
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a class="category-modern" href="#">
+                        <div class="category-img"
+                             style="background:url('@cat.Img') center / cover no-repeat;"></div>
+                        <div class="category-overlay">
+                            <div class="category-title">@cat.Name</div>
+                            <div class="category-sub">Koleksiyonu gör</div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- ===== ÖNE ÇIKAN ÜRÜNLER ===== -->
+<section class="section bg-light">
+    <div class="container">
+
+        <div class="mb-4 text-center">
+            <h2 class="fw-bold mb-1">Öne Çıkan Ürünler</h2>
+            <p class="text-muted mb-0">En sevilen parçalar</p>
+        </div>
+
+        <div class="row g-4">
+            @for (int i = 1; i <= 8; i++)
+            {
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="product-modern">
+                        <div class="product-img"
+                             style="background:url('/images/products/tulum1.jpg') center / cover no-repeat;"></div>
+
+                        <div class="p-3 text-center">
+                            <span class="badge badge-baby-soft mb-2">Yeni</span>
+
+                            <div class="fw-semibold">Pamuklu Tulum @i</div>
+                            <div class="text-muted small mb-2">Yenidoğan</div>
+
+                            <div class="price-baby mb-3">
+                                ₺ @((i * 249).ToString("N0"))
+                            </div>
+
+                            <a class="btn btn-outline-baby btn-sm rounded-pill px-4"
+                               asp-controller="Products" asp-action="Index">
+                                İncele
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== SEZON BANNER ===== -->
+<section class="section">
+    <div class="container">
+        <div class="baby-banner-modern">
+            <div>
+                <span class="badge badge-baby mb-2">Yeni Koleksiyon</span>
+                <h3 class="fw-bold mb-1">2026 İlkbahar Koleksiyonu</h3>
+                <p class="text-muted mb-0">
+                    Hafif, nefes alabilen ve doğal kumaşlardan üretildi.
+                </p>
+            </div>
+
+            <a class="btn btn-baby px-5 rounded-pill"
+               asp-controller="Products" asp-action="Index">
+                Koleksiyonu Gör
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== BLOG ===== -->
+<section class="section">
+    <div class="container">
+
+        <div class="mb-4 text-center">
+            <h2 class="fw-bold mb-1">Blog</h2>
+            <p class="text-muted mb-0">Bebek giyimi ve bakım rehberi</p>
+        </div>
+
+        <div class="row g-4">
+            @for (int i = 1; i <= 3; i++)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="blog-modern">
+                        <div class="blog-img"
+                             style="background:url('/images/blog/blog1.jpg') center / cover no-repeat;"></div>
+
+                        <div class="p-3">
+                            <div class="text-muted small mb-1">
+                                @DateTime.Now.AddDays(-i * 4).ToString("dd MMM yyyy")
+                            </div>
+
+                            <div class="fw-semibold mb-2">
+                                Bebekler için pamuklu kıyafet seçimi @i
+                            </div>
+
+                            <div class="text-muted small mb-3">
+                                Cilt dostu kumaşlar, yıkama önerileri ve beden seçimi rehberi.
+                            </div>
+
+                            <a class="read-more-baby" href="#">
+                                Devamını oku →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section">
+    <div class="container">
+        <div class="cta-modern">
+            <div>
+                <h3 class="fw-bold mb-1">Toptan & Özel Üretim</h3>
+                <p class="text-muted mb-0">
+                    Mağazalar ve butik markalar için özel üretim çözümleri.
+                </p>
+            </div>
+
+            <a class="btn btn-outline-baby px-5 rounded-pill"
+               asp-controller="Contact" asp-action="Index">
+                Teklif Al
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,45 @@
+@model IEnumerable<EcommerceBaseCore.Models.Product>
+
+@{
+    ViewData["Title"] = "Ürünler";
+}
+
+<section class="section">
+    <div class="container">
+
+        <div class="mb-4 text-center">
+            <h2 class="fw-bold mb-1">Tüm Ürünler</h2>
+            <p class="text-muted mb-0">Bebek & çocuk giyim koleksiyonu</p>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var product in Model)
+            {
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="product-baby">
+                        <div class="product-detail-img"
+                             style="background:url('@product.ImagePath') center / cover no-repeat;">
+                        </div>
+
+                        <div class="p-3 text-center">
+                            <div class="fw-semibold">@product.Name</div>
+                            <div class="text-muted small mb-2">@product.Category?.Name</div>
+
+                            <div class="price-baby mb-3">
+                                ₺ @product.Price.ToString("N0")
+                            </div>
+
+                            <a class="btn btn-outline-baby btn-sm rounded-pill px-4"
+                               asp-controller="Products"
+                               asp-action="Detail"
+                               asp-route-slug="@product.Slug">
+                                İncele
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
